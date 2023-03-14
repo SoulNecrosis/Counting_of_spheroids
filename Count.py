@@ -8,7 +8,7 @@ img_name2 = input("Name of picture with red ones? ")
 img = cv2.imread(img_name)
 img2 = cv2.imread(img_name2)
 
-# boundaries for the color blue
+#boundaries for the color blue
 boundaries = [
     ([30, 0, 0], [255, 220, 220])
     ]
@@ -26,17 +26,17 @@ tot_pixel = output.size
 blue_pixel = np.count_nonzero(output)
 percentage = round(blue_pixel * 100 / tot_pixel, 4)
 
-# boundaries for the color red
+#boundaries for the color red
 boundaries = [
     ([0, 0, 30], [220, 220, 255])
     ]
 
 for(lower, upper) in boundaries:
-    # creates numpy array from boundaries
+    #creates numpy array from boundaries
     lower = np.array(lower, dtype = "uint8")
     upper = np.array(upper, dtype = "uint8")
 
-    # finds colors in boundaries and applies a mask
+    #finds colors in boundaries and applies a mask
     mask = cv2.inRange(img2, lower, upper)
     output = cv2.bitwise_and(img2, img2, mask = mask)
 
